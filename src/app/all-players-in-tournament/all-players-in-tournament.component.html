@@ -1,0 +1,43 @@
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+/>
+<div>
+  <div>
+    <form [formGroup]="playerInTournament" (ngSubmit)="onsubmit(playerInTournament.value)">
+      
+        <div class="form-group">
+            <label for="tourId">Tournament ID</label>
+            <input type="text" class="form-control" id="tourId" formControlName="tourId"/>
+            <span style="color: red" *ngIf="tourId.invalid && tourId.touched">Id is required</span>
+        </div>
+
+      <button [disabled]="tourId.invalid" type="submit" class="btn btn-primary">
+        Search
+      </button>
+    </form>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">City</th>
+        <th scope="col">EmailId</th>
+        <th scope="col">Experience</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of players">
+        <td>{{ player.id }}</td>
+        <td>{{ player.name }}</td>
+        <td>{{ player.age }}</td>
+        <td>{{ player.city }}</td>
+        <td>{{ player.emailId }}</td>
+        <td>{{ player.experience }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

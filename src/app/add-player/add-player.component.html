@@ -1,0 +1,57 @@
+<div>
+
+  <form [formGroup]="playerForm" (ngSubmit)="onsubmit(playerForm.value)">
+    
+    <div class="form-group">
+      <label for="id">Id</label>
+      <input type="text" class="form-control" id="id" formControlName="id" />
+      <span style="color: red" *ngIf="id.invalid && id.touched">Id is required</span>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name"/>
+      <span style="color: red" *ngIf="name.invalid && name.touched">Name is required</span>
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input type="text" class="form-control" id="age" formControlName="age"/>
+      <span style="color: red" *ngIf="age.invalid && age.touched">Age is required</span>
+    </div>
+
+    <div class="form-group">
+      <label for="city">City</label>
+      <input type="text" class="form-control" id="city" formControlName="city"/>
+      <span style="color: red" *ngIf="city.invalid && city.touched">City is required</span>
+    </div>
+
+    <div class="form-group">
+        <label for="emailId">EmailId</label>
+        <input type="text" class="form-control" id="emailId" formControlName="emailId"/>
+        <span style="color: red" *ngIf="emailId.invalid && emailId.touched">Email is required</span>
+    </div>
+
+    <div class="form-group">
+        <label for="experience">Experience</label>
+        <input type="text" class="form-control" id="experience" formControlName="experience"/>
+        <span style="color: red" *ngIf="experience.invalid && experience.touched">Experience is required</span>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="tournamentId">TournamentID</label>
+      <select class="form-select" aria-label="Default select example" id="tournamentId" formControlName="tournamentId">
+        <option *ngFor="let tour of tournaments" value="{{ tour.id }}">
+          {{ tour.id }}
+        </option>
+      </select>
+      <span style="color: red" *ngIf="tournamentId.invalid && tournamentId.touched">TournamentID is required</span>
+    </div>
+
+    <button [disabled]="playerForm.invalid" type="submit" class="btn btn-success">
+      Add Player
+    </button>
+    
+  </form>
+
+</div>
